@@ -1,0 +1,8 @@
+Nama	: Danny Marchiano
+Npm	: 5520122163
+Kelas	: IF-C 2021
+Jurusan	: Teknik Informatika
+Fakultas: Teknik
+Reguler	: Pagi
+
+Ini merupakan file dari kontributor Danny
