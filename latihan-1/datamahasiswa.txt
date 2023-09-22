@@ -1,0 +1,6 @@
+Data Mahasiswa
+  1. 5520121059 Eli susialawati
+  2. 5520121060 Qigelia Hasbulloh
+  3. 5520121061 Nisa nurhaqiqi
+
+  jadi ini adalah data mahasiswa yang sudah tertulis
