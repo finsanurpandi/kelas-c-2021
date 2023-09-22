@@ -1,0 +1,3 @@
+nama	: ade nurpuspita sari
+kelas	: if c 2021
+npm	: 5520121068
