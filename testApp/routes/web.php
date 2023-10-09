@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CobaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/coba', [CobaController::class, 'test']);
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,13 +30,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/unsur/{name?}', function(string $name=null){
-    if($name == null) {
-        return "hello there .. ";
-    } else {
-        return "hello ".$name;
-    }
+Route::prefix('user')
+    ->name('user.')
+    ->group(function() {
+        Route::get('/unsur/{name?}', function(string $name=null){
+            if($name == null) {
+                return "hello there .. ";
+            } else {
+                return "hello ".$name;
+            }
+        })->name('test');
 });
+
 
 Route::get('/test-lagi', function () {
     return view('test'); 
