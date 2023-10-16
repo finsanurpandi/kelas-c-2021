@@ -15,6 +15,7 @@ use App\Http\Controllers\CobaController;
 |
 */
 Route::get('/coba', [CobaController::class, 'test']);
+Route::view('/view', 'tampilan');
 
 Route::get('/', function () {
     return view('welcome');

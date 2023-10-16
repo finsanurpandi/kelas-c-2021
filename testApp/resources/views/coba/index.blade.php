@@ -36,6 +36,14 @@
         $value=1;
     @endphp
 
-    <x-alert message="Lorem, ipsum dolor sit amet consectetur adipisicing elit." />
+    {{-- <x-alert type="secondary" message="Lorem, ipsum dolor sit amet consectetur adipisicing elit." /> --}}
+    <x-alert type="success">
+        <x-slot:header>SUCCESS</x-slot:header>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+    </x-alert>
+
+<x-badge color="red">
+    Ini adalah badge
+</x-badge>
 </body>
 </html>
