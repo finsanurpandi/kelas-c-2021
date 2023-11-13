@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Lecturer extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'nidn';
 }
