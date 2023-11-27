@@ -61,6 +61,9 @@ Route::prefix('lecturer')
         Route::get('/', [LecturerController::class, 'index'])->name('index');
         Route::get('/create', [LecturerController::class, 'create'])->name('create');
         Route::post('/store', [LecturerController::class, 'store'])->name('store');
+        Route::get('/{nidn}/edit', [LecturerController::class, 'edit'])->name('edit');
+        Route::patch('/{nidn}/update', [LecturerController::class, 'update'])->name('update');
+        Route::delete('/{nidn}/delete', [LecturerController::class, 'destroy'])->name('destroy');
 });
 
 require __DIR__.'/auth.php';
