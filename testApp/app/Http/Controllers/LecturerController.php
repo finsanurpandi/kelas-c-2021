@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Lecturer;
 use App\Models\Department;
+use App\Models\User;
 use App\Http\Requests\StoreLecturerRequest;
 use App\Http\Requests\UpdateLecturerRequest;
 
@@ -12,8 +13,11 @@ class LecturerController extends Controller
 {
     public function index()
     {
-        $data['lecturers'] = Lecturer::all();
+        // $data['lecturers'] = Lecturer::all();
+        $data['lecturers'] = Lecturer::with('department')->get();
         // $data['lecturers'] = Lecturer::where('department_id', 1)->get(); //first()
+        // $data['students'] = Lecturer::find('5136152709')->students()->get();
+
 
         // dd($lectures);
         // echo "<pre>";
@@ -67,5 +71,17 @@ class LecturerController extends Controller
         Lecturer::findOrFail($nidn)->delete();
 
         return redirect()->route('lecturer.index');
+    }
+
+    // relationship
+    public function lecturer_student(string $nidn)
+    {
+        // $data['students'] = Lecturer::findOrFail($nidn)->students()->with('department')->get();
+        $data['students'] = Lecturer::findOrFail($nidn)->students;
+        $data['departments'] = Department::findOrFail(3)->students;
+        $data['department'] = Department::findOrFail(3)->student;
+        $data['users'] = User::with('roles')->get();
+
+        return view('lecturer.lecture_student', $data);
     }
 }

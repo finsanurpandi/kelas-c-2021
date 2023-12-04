@@ -9,6 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
+
                   <x-primary-button tag="a" :href="route('lecturer.create')">
                     Tambah Data
                   </x-primary-button>
@@ -35,9 +36,12 @@
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{ $no++ }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{ $lecturer->nidn }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{ $lecturer->nama }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{ $lecturer->department_id }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{ $lecturer->department->name }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">
                                           <!-- isi untuk tombol edit dan delete -->
+                                          <x-primary-button tag="a" :href="route('lecturer.students', $lecturer->nidn)">
+                                            Mahasiswa
+                                          </x-primary-button>
                                           <x-primary-button tag="a" :href="route('lecturer.edit', $lecturer->nidn)">
                                             Edit Data
                                           </x-primary-button>

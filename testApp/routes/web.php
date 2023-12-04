@@ -64,6 +64,9 @@ Route::prefix('lecturer')
         Route::get('/{nidn}/edit', [LecturerController::class, 'edit'])->name('edit');
         Route::patch('/{nidn}/update', [LecturerController::class, 'update'])->name('update');
         Route::delete('/{nidn}/delete', [LecturerController::class, 'destroy'])->name('destroy');
+
+        // relationship
+        Route::get('/{nidn}/students', [LecturerController::class, 'lecturer_student'])->name('students');
 });
 
 require __DIR__.'/auth.php';
