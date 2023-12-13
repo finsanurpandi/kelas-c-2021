@@ -8,6 +8,8 @@ use App\Models\Department;
 use App\Models\User;
 use App\Http\Requests\StoreLecturerRequest;
 use App\Http\Requests\UpdateLecturerRequest;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestMail;
 
 class LecturerController extends Controller
 {
@@ -17,7 +19,7 @@ class LecturerController extends Controller
         $data['lecturers'] = Lecturer::with('department')->get();
         // $data['lecturers'] = Lecturer::where('department_id', 1)->get(); //first()
         // $data['students'] = Lecturer::find('5136152709')->students()->get();
-
+        $data['user'] = auth()->user();
 
         // dd($lectures);
         // echo "<pre>";
@@ -83,5 +85,31 @@ class LecturerController extends Controller
         $data['users'] = User::with('roles')->get();
 
         return view('lecturer.lecture_student', $data);
+    }
+
+    // MAIL
+    public function sentMail()
+    {
+        $lecturer = Lecturer::find('1062044373');
+        $subject = 'Invoice for NIDN '. $lecturer->nidn;
+
+        $clients = [
+            'client1@mail.com',
+            'client2@mail.com',
+            'client3@mail.com',
+            'client4@mail.com',
+            'client5@mail.com',
+            'client6@mail.com',
+            'client7@mail.com',
+            'client8@mail.com',
+            'client9@mail.com',
+            'client10@mail.com',
+        ];
+
+        foreach($clients as $client)
+        {
+            Mail::to($client)->queue(new TestMail($lecturer, $subject));
+        }
+        
     }
 }
